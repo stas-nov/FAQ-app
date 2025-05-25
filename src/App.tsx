@@ -111,7 +111,7 @@ function AppContent() {
       setChatHistory((prev) => [...prev, { role: "user", content: message }]);
 
       try {
-        const systemPrompt = createSystemPrompt(message);
+        const systemPrompt = createSystemPrompt(message, language);
 
         const apiMessages: ApiMessage[] = [
           { role: "system", content: systemPrompt },

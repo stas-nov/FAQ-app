@@ -3,11 +3,10 @@ import { useLanguage } from '../context/LanguageContext';
 import LanguageIcon from './icons/LanguageIcon';
 
 export function LanguageSwitcher() {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -21,7 +20,6 @@ export function LanguageSwitcher() {
     };
   }, []);
 
-  // Get language display information
   const languages = [
     { code: 'ja', flag: '🇯🇵', label: 'Japanese' },
     { code: 'en', flag: '🇺🇸', label: 'English' }
