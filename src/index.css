@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply bg-background text-text;
+}
+
+.faq-item {
+  @apply border-b last:border-b-0 border-faqBorder overflow-hidden transition-all duration-300;
+}
+
+.faq-question {
+  @apply flex justify-between items-center p-4 cursor-pointer bg-faqBg hover:bg-faqHover transition-colors duration-200;
+}
+
+.faq-answer {
+  @apply p-6 overflow-hidden transition-all duration-300;
+  max-height: 0;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 1000px;
+}
+
+.search-container {
+  @apply w-full max-w-2xl mx-auto;
+}
+
+.search-input {
+  @apply w-full p-4 border-2 border-secondary rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300;
+}
+
+.faq-container {
+  @apply w-full max-w-3xl mx-auto;
+}
+
+.faq-title {
+  @apply text-3xl font-bold text-center text-primary;
+}
+
+.icon {
+  @apply transition-transform duration-300;
+}
+
+.faq-item.open .icon {
+  @apply transform rotate-180;
+}
+
+iframe {
+  display: none;
+}

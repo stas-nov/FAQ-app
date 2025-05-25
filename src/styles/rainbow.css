@@ -1,0 +1,79 @@
+/* Rainbow border effect */
+.rainbow-border-focus {
+  outline: none;
+}
+
+.rainbow-border-focus:focus {
+  /* hide the default border, add your shadows */
+  border: 2px solid transparent;
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.5),
+    0 0 0 4px transparent;
+
+  /* clip so white fill is under content and rainbow occupies the border */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  /* two layers: white fill + seamless rainbow stripe */
+  background-image:
+    linear-gradient(white, white),
+    linear-gradient(
+      to right,
+      #ff0000, /* Red */
+      #ff8000, /* Orange */
+      #ffff00, /* Yellow */
+      #00ff00, /* Green */
+      #0000ff, /* Blue */
+      #8000ff, /* Indigo */
+      #ff00ff, /* Violet */
+      #ff0000  /* repeat Red for smooth wrap */
+    );
+
+  /* make rainbow stripe 4× wider so it can scroll */
+  background-size: 100% 100%, 400% 100%;
+  background-position: 0 0, 0 0;
+
+  /* now animate its position */
+  animation: rotate-gradient 3s linear infinite;
+}
+
+.rainbow-border-button {
+  /* hide the default border, add your shadows */
+  border: 2px solid transparent;
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.5),
+    0 0 0 4px transparent;
+
+  /* clip so white fill is under content and rainbow occupies the border */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  /* two layers: white fill + seamless rainbow stripe */
+  background-image:
+    linear-gradient(white, white),
+    linear-gradient(
+    to right,
+    #ff0000, /* Red */
+    #ff8000, /* Orange */
+    #ffff00, /* Yellow */
+    #00ff00, /* Green */
+    #0000ff, /* Blue */
+    #8000ff, /* Indigo */
+    #ff00ff, /* Violet */
+    #ff0000  /* repeat Red for smooth wrap */
+  );
+
+  /* make rainbow stripe 4× wider so it can scroll */
+  background-size: 100% 100%, 400% 100%;
+  background-position: 0 0, 0 0;
+
+  /* now animate its position */
+  animation: rotate-gradient 3s linear infinite;
+}
+
+@keyframes rotate-gradient {
+  to {
+    /* shift that second layer left by 300% for a full loop */
+    background-position: 0 0, -300% 0;
+  }
+}
