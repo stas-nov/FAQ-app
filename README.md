@@ -1,24 +1,36 @@
-# Pre Requirements
+# FAQ AIチャット デモ
 
-- node: v16.19.1
-- npm: 8.19.3
+## 概要
+このアプリは、マーズフラッグ様のWebサイト情報をもとに、FAQリストとAIチャットアシスタントを組み合わせて作成したプロジェクトです。ユーザーはFAQページを参照したり、AIアシスタントに質問することで、サービスに関する疑問を解決できます。
 
-# 開発サーバーの立ち上げ方
+## 主な機能
+- よくある質問（FAQ）のリスト表示
+- AIチャットアシスタント（OpenAI APIを利用）
+- モーダルによるチャットUI
+- フロントエンドのみで完結（バックエンド不要）
 
-- `npm i`
-- `npm start`
+## セットアップ・実行方法
+1. このリポジトリをクローン
+2. `npm install` を実行
+3. OpenAI APIキーを `.env` ファイルに設定（例: `REACT_APP_OPENAI_API_KEY=sk-xxxx`）
+4. `npm start` でローカルサーバー起動
+5. `http://localhost:3000` にアクセス
 
-# テストの実行方法
+## 使い方
+- FAQページから質問内容を確認できます。
+- 「AIアシスタントに質問」ボタンをクリックすると、モーダルが開きチャット形式で質問できます。
+- AIはFAQリストに記載されている内容のみ回答します。それ以外の質問には「お答えできません」と返します。
 
-- `npm test`
+## 技術構成
+- React
+- Tailwind CSS
+- OpenAI API
+- フロントエンドのみ
 
-# 実装内容
+## デザイン・実装ポイント
+- モーダルウィンドウは検索入力欄と同じ位置・サイズから展開され、UXを重視
+- UI/UXの分かりやすさ、読みやすさを優先
 
-以下の順番で実装を進めてください
-
-1. 実装概要と取り組み方を読む
-   - [コーディングテスト説明スライド](https://docs.google.com/presentation/d/1Kqd-s88XVty81n8w38TXF1r1l6U1_cuuU4dgXgJQOgU/edit#slide=id.g19965e688fe_0_130) 1~5p
-2. 回答フォームを作成する
-   - [実装内容説明スライド](https://docs.google.com/presentation/d/1Kqd-s88XVty81n8w38TXF1r1l6U1_cuuU4dgXgJQOgU/edit#slide=id.g2559371effd_0_6)
-3. 新たな回答形式を追加する
-   - [実装内容説明スライド](https://docs.google.com/presentation/d/1Kqd-s88XVty81n8w38TXF1r1l6U1_cuuU4dgXgJQOgU/edit#slide=id.g2559371effd_0_10)
+## 制限事項
+- 本プロジェクトはデモ用です。APIキーの公開や本番運用は非推奨です。
+- AIの回答はFAQリストの範囲に限定されています。

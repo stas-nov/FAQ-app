@@ -1,14 +1,8 @@
 import faqData from './faq.json';
 
-/**
- * Creates a formatted FAQ prompt string that's optimized for LLM understanding
- * @returns A string containing all FAQs in a structured format
- */
 export function createFaqPrompt(): string {
-  // Group FAQs by category
   const faqsByCategory: Record<string, Array<{ question: string; answer: string }>> = {};
   
-  // Process and group all FAQ items
   faqData.forEach(faq => {
     if (!faqsByCategory[faq.category]) {
       faqsByCategory[faq.category] = [];
@@ -20,14 +14,11 @@ export function createFaqPrompt(): string {
     });
   });
   
-  // Build the formatted prompt
   let formattedPrompt = '';
   
-  // Add each category and its FAQs
   Object.entries(faqsByCategory).forEach(([category, faqs]) => {
     formattedPrompt += `## ${category}\n\n`;
     
-    // Add each Q&A pair in this category
     faqs.forEach(faq => {
       formattedPrompt += `Q: ${faq.question}\nA: ${faq.answer}\n\n`;
     });
@@ -36,11 +27,6 @@ export function createFaqPrompt(): string {
   return formattedPrompt.trim();
 }
 
-/**
- * Creates the complete system prompt with instructions and FAQ data
- * @param userQuestion The user's current question
- * @returns A complete system prompt string
- */
 export function createSystemPrompt(userQuestion: string): string {
   const faqContent = createFaqPrompt();
   

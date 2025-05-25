@@ -1,29 +1,25 @@
-/* Rainbow border effect */
 .rainbow-border-focus {
   outline: none;
 }
 
 .rainbow-border-focus:focus {
-  /* hide the default border, add your shadows */
   border: 2px solid transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 0 4px transparent;
 
-  /* clip so white fill is under content and rainbow occupies the border */
   background-origin: border-box;
   background-clip: padding-box, border-box;
 
-  /* two layers: white fill + seamless rainbow stripe */
   background-image: linear-gradient(white, white),
     linear-gradient(
       to right,
       #e57373,
-      /* muted red */ #ffb74d,
-      /* muted orange */ #fff176,
-      /* muted yellow */ #81c784,
-      /* muted green */ #64b5f6,
-      /* muted blue */ #9575cd,
-      /* muted indigo */ #f06292,
-      /* muted violet/pink */ #e57373 /* wrap back to start for smooth loop */
+      #ffb74d,
+      #fff176,
+      #81c784,
+      #64b5f6,
+      #9575cd,
+      #f06292,
+      #e57373
     );
   background-size: 100% 100%, 400% 100%;
   background-position: 0 0, 0 0;
@@ -31,26 +27,23 @@
 }
 
 .rainbow-border-button {
-  /* hide the default border, add your shadows */
   border: 2px solid transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 0 4px transparent;
 
-  /* clip so white fill is under content and rainbow occupies the border */
   background-origin: border-box;
   background-clip: padding-box, border-box;
 
-  /* two layers: white fill + seamless rainbow stripe */
   background-image: linear-gradient(white, white),
     linear-gradient(
       to right,
       #e57373,
-      /* muted red */ #ffb74d,
-      /* muted orange */ #fff176,
-      /* muted yellow */ #81c784,
-      /* muted green */ #64b5f6,
-      /* muted blue */ #9575cd,
-      /* muted indigo */ #f06292,
-      /* muted violet/pink */ #e57373 /* wrap back to start for smooth loop */
+      #ffb74d,
+      #fff176,
+      #81c784,
+      #64b5f6,
+      #9575cd,
+      #f06292,
+      #e57373
     );
   background-size: 100% 100%, 400% 100%;
   background-position: 0 0, 0 0;
@@ -59,7 +52,6 @@
 
 @keyframes rotate-gradient {
   to {
-    /* shift that second layer left by 300% for a full loop */
     background-position: 0 0, -300% 0;
   }
 }

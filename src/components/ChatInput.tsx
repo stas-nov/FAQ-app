@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useCallback, RefObject } from 'react';
+import { useState, FormEvent, useCallback, RefObject } from 'react';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => Promise<void>;
@@ -14,18 +14,14 @@ export function ChatInput({ onSendMessage, isLoading = false, inputRef }: ChatIn
     
     if (!message.trim() || isLoading) return;
     
-    // Store message in a variable before clearing the input
     const currentMessage = message;
     
-    // Clear input immediately
     setMessage('');
     
-    // Focus the input field again
     if (inputRef?.current) {
       inputRef.current.focus();
     }
     
-    // Send the message
     try {
       await onSendMessage(currentMessage);
     } catch (error) {
@@ -34,7 +30,7 @@ export function ChatInput({ onSendMessage, isLoading = false, inputRef }: ChatIn
   }, [message, onSendMessage, isLoading, inputRef]);
 
   return (
-    <form onSubmit={handleSubmit} className="w-full relative">
+    <form onSubmit={handleSubmit} className="w-full relative mt-4">
       <div className="relative flex items-center w-full">
         <svg
           className="absolute left-4 h-5 w-5 text-gray-400"

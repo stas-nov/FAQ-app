@@ -6,15 +6,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#FF4500',    // Bright orange-red
-        secondary: '#00BFFF',  // Deep sky blue
-        accent: '#FF1493',     // Deep pink
-        highlight: '#32CD32',  // Lime green
-        background: '#FFFFFF', // White
-        text: '#000000',       // Black
-        faqBg: '#F8F9FA',      // Light gray
-        faqBorder: '#D8DEE4',  // Light blue-gray
-        faqHover: '#ECEFF1',   // Dark-light blue-gray
+        primary: '#ff4500',
+        secondary: '#00bfff',
+        accent: '#ff1493',
+        highlight: '#32cd32',
+        background: '#ffffff',
+        text: '#000000',
+        faqBg: '#f8f9fa',
+        faqBorder: '#d8dee4',
+        faqHover: '#eceff1',
       },
       keyframes: {
         'slide-up': {

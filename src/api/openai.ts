@@ -1,5 +1,3 @@
-// OpenAI API wrapper
-
 const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 const API_URL = 'https://api.openai.com/v1/chat/completions';
 
@@ -10,7 +8,6 @@ export interface Message {
 
 export async function chatWithGPT(messages: Message[]): Promise<string> {
   try {
-    console.log('asda', OPENAI_API_KEY)
     if (!OPENAI_API_KEY) {
       throw new Error('OpenAI APIキーが設定されていません。.envファイルをご確認ください。');
     }

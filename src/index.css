@@ -57,12 +57,12 @@ body {
 .rainbow-bg {
   background: linear-gradient(
     90deg,
-    #fdeaf0 0%,     /* Light Pink */
-    #fffbed 20%,    /* Light Yellow */
-    #ecfff5 40%,    /* Light Green */
-    #eaf3fc 60%,    /* Light Blue */
-    #f3eeff 80%,    /* Light Purple */
-    #fdeaf0 100%    /* Back to Light Pink */
+    #fdeaf0 0%,
+    #fffbed 20%,
+    #ecfff5 40%,
+    #eaf3fc 60%,
+    #f3eeff 80%,
+    #fdeaf0 100%
   );
 }
 

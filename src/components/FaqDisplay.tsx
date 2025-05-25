@@ -9,31 +9,21 @@ export interface FAQItem {
 
 interface FaqDisplayProps {
   faqs: FAQItem[];
-  onSearch?: (query: string) => void;
-  searchQuery?: string;
-  className?: string;
 }
 
 export function FaqDisplay({ 
-  faqs, 
-  onSearch, 
-  searchQuery = '',
-  className = '' 
+  faqs
 }: FaqDisplayProps) {
   const [openFaqIds, setOpenFaqIds] = useState<string[]>([]);
 
-  // Toggle FAQ open/close
   const toggleFaq = (id: string) => {
     if (openFaqIds.includes(id)) {
-      // Close this FAQ
       setOpenFaqIds(openFaqIds.filter(faqId => faqId !== id));
     } else {
-      // Open this FAQ
       setOpenFaqIds([...openFaqIds, id]);
     }
   };
 
-  // Group FAQs by category
   const groupedFaqs: Record<string, FAQItem[]> = {};
   faqs.forEach((faq) => {
     if (!groupedFaqs[faq.category]) {
@@ -42,21 +32,18 @@ export function FaqDisplay({
     groupedFaqs[faq.category].push(faq);
   });
 
-  // Sort categories alphabetically
   const sortedCategories = Object.keys(groupedFaqs).sort();
 
   return (
-    <div className={`faq-container ${className}`}>
+    <div className="faq-container space-y-4">
       {faqs.length > 0 ? (
         sortedCategories.map((category) => (
-          <div key={category} className="">
-            {/* Simple Category Header */}
+          <div key={category}>
             <p className="text-2xl sm:text-3xl mb-3 sm:mb-4 font-semibold text-gray-800">
               {category}
             </p>
 
-            {/* FAQs in this category */}
-            <div className="">
+            <div>
               {groupedFaqs[category].map((faq) => (
                 <div 
                   key={faq.id} 
