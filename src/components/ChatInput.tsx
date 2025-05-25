@@ -55,7 +55,7 @@ export function ChatInput({ onSendMessage, isLoading = false, inputRef }: ChatIn
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="AIアシスタントに質問する..."
-          className="w-full p-4 pl-12 pr-12 text-lg border-2 border-gray-100 rounded-[33px] bg-white rainbow-border-focus transition-all duration-300"
+          className="w-full h-[65px] pl-12 pr-12 border-2 border-gray-100 rounded-[33px] bg-white rainbow-border-focus transition-all duration-300 flex items-center"
           disabled={isLoading}
         />
         <button
@@ -63,7 +63,7 @@ export function ChatInput({ onSendMessage, isLoading = false, inputRef }: ChatIn
           disabled={!message.trim() || isLoading}
           className={`absolute right-2 p-2 rounded-full ${!message.trim() || isLoading
             ? 'text-gray-400 cursor-not-allowed'
-            : 'text-blue-500 hover:bg-blue-50'}`}
+            : 'text-gray-800 hover:bg-gray-100'}`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

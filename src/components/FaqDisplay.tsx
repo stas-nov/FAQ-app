@@ -51,7 +51,7 @@ export function FaqDisplay({
         sortedCategories.map((category) => (
           <div key={category} className="">
             {/* Simple Category Header */}
-            <p className="text-3xl mb-4 font-semibold text-gray-800">
+            <p className="text-2xl sm:text-3xl mb-3 sm:mb-4 font-semibold text-gray-800">
               {category}
             </p>
 
@@ -63,24 +63,24 @@ export function FaqDisplay({
                   className={`faq-item ${openFaqIds.includes(faq.id) ? 'open' : ''}`}
                 >
                   <div 
-                    className="faq-question cursor-pointer p-4 bg-white shadow-sm hover:shadow transition-shadow flex justify-between items-center"
+                    className="faq-question cursor-pointer p-3 sm:p-4 bg-white shadow-sm hover:shadow transition-shadow flex justify-between items-center"
                     onClick={() => toggleFaq(faq.id)}
                   >
-                    <h3 className="font-medium text-lg text-gray-800">{faq.question}</h3>
+                    <h3 className="font-medium text-base sm:text-lg text-gray-800">{faq.question}</h3>
                     <span className="text-gray-500">
                       {openFaqIds.includes(faq.id) ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                         </svg>
                       ) : (
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                       )}
                     </span>
                   </div>
-                  <div className={`faq-answer p-4 bg-gray-50 rounded-b-lg ${openFaqIds.includes(faq.id) ? 'block' : 'hidden'}`}>
-                    <p className="text-gray-700">{faq.answer}</p>
+                  <div className={`faq-answer p-3 sm:p-4 bg-gray-50 ${openFaqIds.includes(faq.id) ? 'block' : 'hidden'}`}>
+                    <p className="text-sm sm:text-base text-gray-700">{faq.answer}</p>
                   </div>
                 </div>
               ))}
@@ -88,7 +88,7 @@ export function FaqDisplay({
           </div>
         ))
       ) : (
-        <p className="text-center text-gray-500 py-4">お探しのFAQが見つかりませんでした。</p>
+        <p className="text-center text-sm sm:text-base text-gray-500 py-3 sm:py-4">お探しのFAQが見つかりませんでした。</p>
       )}
     </div>
   );
