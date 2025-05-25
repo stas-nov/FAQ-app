@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/FAQ-app/static/css/main.3def6579.css",
-    "main.js": "/FAQ-app/static/js/main.78745c30.js",
+    "main.js": "/FAQ-app/static/js/main.c4e63f54.js",
     "index.html": "/FAQ-app/index.html",
     "main.3def6579.css.map": "/FAQ-app/static/css/main.3def6579.css.map",
-    "main.78745c30.js.map": "/FAQ-app/static/js/main.78745c30.js.map"
+    "main.c4e63f54.js.map": "/FAQ-app/static/js/main.c4e63f54.js.map"
   },
   "entrypoints": [
     "static/css/main.3def6579.css",
-    "static/js/main.78745c30.js"
+    "static/js/main.c4e63f54.js"
   ]
 }
