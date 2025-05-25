@@ -30,7 +30,7 @@ export function createFaqPrompt(): string {
 export function createSystemPrompt(userQuestion: string): string {
   const faqContent = createFaqPrompt();
   
-  return `あなたはFAQ専用のAIです。下記FAQに基づいて質問に答えてください。FAQリストにそのような情報がなければ「申し訳ありませんが、その質問にはお答えできません。」と返答してください。
+    return `あなたはFAQ専用のAIです。下記FAQに基づいて質問に答えてください。FAQリストにそのような情報がなければ「申し訳ありませんが、その質問にはお答えできません。」と返答してください。
 
 [FAQリスト]
 ${faqContent}

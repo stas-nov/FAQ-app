@@ -1,0 +1,27 @@
+{
+  "header": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Browse frequently asked questions and answers about our services"
+  },
+  "search": {
+    "placeholder": "Search...",
+    "aiButton": "AI Assistant"
+  },
+  "chat": {
+    "title": "Chat with AI Assistant",
+    "placeholder": "Ask the AI Assistant...",
+    "thinking": "Thinking...",
+    "welcome": {
+      "title": "Start Chatting",
+      "message": "Ask us any questions about our services!"
+    },
+    "buttons": {
+      "clear": "Clear Chat",
+      "close": "Close"
+    }
+  },
+  "language": {
+    "switchToJapanese": "Switch to Japanese",
+    "switchToEnglish": "Switch to English"
+  }
+}

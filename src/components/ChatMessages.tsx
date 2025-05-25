@@ -1,4 +1,5 @@
 import { RefObject } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 interface ChatMessage {
   role: "user" | "ai";
@@ -20,6 +21,7 @@ export function ChatMessages({
   chatContainerRef,
   messagesEndRef,
 }: ChatMessagesProps) {
+  const { t } = useLanguage();
   return (
     <div className="flex-1 relative overflow-hidden">
       <div
@@ -47,10 +49,10 @@ export function ChatMessages({
                   </svg>
                 </div>
                 <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-1">
-                  チャットを開始
+                  {t('chat.welcome.title')}
                 </h2>
                 <p className="text-gray-500 dark:text-gray-400 text-sm">
-                  私たちのサービスについて、どんな質問でもお答えします！
+                  {t('chat.welcome.message')}
                 </p>
               </div>
             </div>
@@ -106,7 +108,7 @@ export function ChatMessages({
                   style={{ animationDelay: "0.4s" }}
                 ></div>
                 <span className="text-gray-500 text-sm">
-                  考えています...
+                  {t('chat.thinking')}
                 </span>
               </div>
             </div>

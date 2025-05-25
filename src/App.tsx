@@ -2,7 +2,10 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import { FaqDisplay, FAQItem } from "./components/FaqDisplay";
 import { ChatModal } from "./components/ChatModal";
 import { SearchButton } from "./components/SearchButton";
-import faqData from "./data/faq.json";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { LanguageProvider, useLanguage } from "./context/LanguageContext";
+import faqDataJa from "./data/faq.json";
+import faqDataEn from "./data/faq-en.json";
 import createSystemPrompt from "./data/faqPrompt";
 import { chatWithGPT, Message as ApiMessage } from "./api/openai";
 import "./styles/rainbow.css";
@@ -22,7 +25,8 @@ interface ButtonPosition {
   visibleLeft: number;
 }
 
-function App() {
+function AppContent() {
+  const { t, language } = useLanguage();
   const searchButtonRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,6 +37,8 @@ function App() {
   const [buttonPosition, setButtonPosition] = useState<ButtonPosition | null>(
     null
   );
+
+  const faqData = language === 'ja' ? faqDataJa : faqDataEn;
 
   const filteredFaqs: FAQItem[] = faqData
     .filter(
@@ -133,40 +139,53 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-4 sm:py-8 px-3 sm:px-4">
-      <div className="container mx-auto max-w-3xl">
-        <header className="text-center mb-6 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
-            よくあるご質問
-          </h1>
-          <p className="text-sm sm:text-base text-gray-600">
-            サービスに関するよくあるご質問と回答をご覧いただけます
-          </p>
-        </header>
+      <div className="container mx-auto">
+        <div className="flex justify-end mb-4 px-4">
+          <LanguageSwitcher />
+        </div>
+        <div className="max-w-3xl mx-auto px-4">
+          <header className="text-center mb-6 sm:mb-12">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+              {t('header.title')}
+            </h1>
+            <p className="text-sm sm:text-base text-gray-600">
+              {t('header.subtitle')}
+            </p>
+          </header>
 
-        <SearchButton
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          inputRef={inputRef}
-          searchButtonRef={searchButtonRef}
-          handleSearchClick={handleSearchClick}
-        />
+          <SearchButton
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            inputRef={inputRef}
+            searchButtonRef={searchButtonRef}
+            handleSearchClick={handleSearchClick}
+          />
 
-        <FaqDisplay
-          faqs={filteredFaqs}
-        />
+          <FaqDisplay
+            faqs={filteredFaqs}
+          />
 
-        <ChatModal
-          isOpen={isChatModalOpen}
-          onClose={handleCloseModal}
-          onSendMessage={handleSendMessage}
-          isLoading={isLoading}
-          error={error}
-          messages={chatHistory}
-          onClearChat={handleClearChat}
-          buttonPosition={buttonPosition}
-        />
+          <ChatModal
+            isOpen={isChatModalOpen}
+            onClose={handleCloseModal}
+            onSendMessage={handleSendMessage}
+            isLoading={isLoading}
+            error={error}
+            messages={chatHistory}
+            onClearChat={handleClearChat}
+            buttonPosition={buttonPosition}
+          />
+        </div>
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
 

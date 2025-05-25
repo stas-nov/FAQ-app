@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1",
+    "category": "MARS FINDER",
+    "question": "What kind of work and time frame are required to implement MARS FINDER?",
+    "answer": "Implementation is as simple as adding a tag to your site—no special skills or hardware purchase required. You can start using it the same day."
+  },
+  {
+    "id": "2",
+    "category": "MARS FINDER",
+    "question": "Can PDF and image files be searched as well?",
+    "answer": "Yes, text inside PDF files can be searched, and image thumbnails are also supported."
+  },
+  {
+    "id": "3",
+    "category": "MARS FINDER",
+    "question": "Can it integrate with external tools like Google Analytics or Google Tag Manager?",
+    "answer": "Yes, it can integrate with Google Analytics and Google Tag Manager, enabling you to analyze search logs and manage tags."
+  },
+  {
+    "id": "4",
+    "category": "MARS FINDER",
+    "question": "Is accessibility and multilingual support provided?",
+    "answer": "It achieves high accessibility compliant with WCAG 2.0 and JIS X 8341-3:2016, and multilingual support is also available."
+  },
+  {
+    "id": "5",
+    "category": "MARS FINDER",
+    "question": "What is the operation and support system after implementation?",
+    "answer": "Comprehensive support is available after implementation, including a contact point for inquiries, detailed manuals, and setup tools."
+  },
+  {
+    "id": "6",
+    "category": "MARS EmoTech",
+    "question": "What types of training data does MARS EmoTech support?",
+    "answer": "It can learn from a wide variety of data such as internal policies, codes of conduct, in-house FAQs, website information, and various knowledge data."
+  },
+  {
+    "id": "7",
+    "category": "MARS EmoTech",
+    "question": "What are the benefits of integrating MARS EmoTech with MARS FINDER?",
+    "answer": "Chat-based AI conversation and on-site search are seamlessly integrated, greatly improving the reliability and accuracy of information."
+  },
+  {
+    "id": "8",
+    "category": "MARS EmoTech",
+    "question": "How much effort is required for implementation and operation?",
+    "answer": "It is easy to implement—just add a tag. There is no need to purchase hardware or perform maintenance work."
+  },
+  {
+    "id": "9",
+    "category": "MARS EmoTech",
+    "question": "Are there any use cases for internal training or knowledge sharing?",
+    "answer": "It can be used for employee training and knowledge sharing, reducing the burden of inquiries by letting it learn procedures and FAQs."
+  },
+  {
+    "id": "10",
+    "category": "MARS EmoTech",
+    "question": "Is customization or API integration possible?",
+    "answer": "Customization and integration with existing systems are possible through API integration with the MARS Platform."
+  },
+  {
+    "id": "11",
+    "category": "MARS SCREEN",
+    "question": "What is multidimensional filtering search in MARS SCREEN?",
+    "answer": "It is a search function that allows you to freely combine multiple axes (attribute information) for filtering. You can intuitively search for information using multiple conditions such as categories, numerical ranges, drill-downs, and keywords."
+  },
+  {
+    "id": "12",
+    "category": "MARS SCREEN",
+    "question": "Can I implement it without knowledge of web development or server-side programming?",
+    "answer": "Yes. No server-side development is required—you can simply update data in Excel and upload it. The HTML screens are already provided."
+  },
+  {
+    "id": "13",
+    "category": "MARS SCREEN",
+    "question": "How can I compare or export search results?",
+    "answer": "You can select multiple items from the search results to create a comparison table. The table can be exported as PDF or CSV, making it useful for proposal materials and internal approvals."
+  },
+  {
+    "id": "14",
+    "category": "MARS SCREEN",
+    "question": "Can it handle any industry or type of data?",
+    "answer": "It supports flexible multidimensional search and comparison for any type of data, such as product info, FAQs, news, recruitment, real estate listings, athlete info, IR info, and more."
+  },
+  {
+    "id": "15",
+    "category": "MARS SCREEN",
+    "question": "Are there any restrictions regarding design or device compatibility?",
+    "answer": "It can be installed on any web server, with fully customizable design. It supports multiple devices—PC, tablet, smartphone—and provides templates and design resources."
+  },
+  {
+    "id": "16",
+    "category": "MARS EXPLORER",
+    "question": "How easy is it to implement MARS EXPLORER?",
+    "answer": "Just add a tag to the page and it can be implemented the same day. No need for major web renovations or system development."
+  },
+  {
+    "id": "17",
+    "category": "MARS EXPLORER",
+    "question": "What are the features of the suggestion function?",
+    "answer": "It visually suggests recommended products and information based on user input. It does more than just assist input—it can also guide users to special sales or featured pages."
+  },
+  {
+    "id": "18",
+    "category": "MARS EXPLORER",
+    "question": "What are the advantages of suggestion in the search box?",
+    "answer": "It prevents input errors and user drop-off, improving usability and CVR (conversion rate). It is also effective for niche products and long-tail needs."
+  },
+  {
+    "id": "19",
+    "category": "MARS EXPLORER",
+    "question": "Can it be customized for unique designs or content expansion?",
+    "answer": "Yes, it allows flexible customization such as photo/review display, unique designs, and exclusive sales or feature displays."
+  },
+  {
+    "id": "20",
+    "category": "MARS EXPLORER",
+    "question": "What kinds of sites is it suitable for?",
+    "answer": "It is ideal for e-commerce and information sites where users need to quickly find products or information and proceed to purchases or conversions."
+  },
+  {
+    "id": "21",
+    "category": "MARS Platform",
+    "question": "What can be done via API integration with MARS Platform?",
+    "answer": "You can add advanced functions to websites or apps through various APIs, such as search, suggestions, label estimation, summarization, sentiment analysis, and more."
+  },
+  {
+    "id": "22",
+    "category": "MARS Platform",
+    "question": "How much development is required in-house when implementing?",
+    "answer": "Because it’s API integration, you don’t need to develop all functions in-house—just add the necessary features quickly and easily."
+  },
+  {
+    "id": "23",
+    "category": "MARS Platform",
+    "question": "What APIs are available?",
+    "answer": "There are APIs for crawling, data integration, search, suggestions, label estimation, summarization, sentiment judgment, scraping, categorization, and more."
+  },
+  {
+    "id": "24",
+    "category": "MARS Platform",
+    "question": "What are some actual use cases?",
+    "answer": "It is used for a wide range of web automation and enhancements, such as automatic web page categorization and summarization, keyword extraction, and mobile UX automation."
+  },
+  {
+    "id": "25",
+    "category": "MARS Platform",
+    "question": "What are the benefits of implementing MARS Platform?",
+    "answer": "You can quickly add the latest search, suggestion, and data analysis functions to your site or app without building a heavy system from scratch."
+  },
+  {
+    "id": "26",
+    "category": "General",
+    "question": "What are MARS FLAG’s strengths compared to competitors?",
+    "answer": "Advanced search and comparison technology, easy implementation and operation, flexible customization, and a robust support system."
+  },
+  {
+    "id": "27",
+    "category": "General",
+    "question": "What kind of support is available from implementation to operation?",
+    "answer": "Comprehensive support is provided, from setup assistance and operation manuals to inquiry windows and after-implementation support."
+  },
+  {
+    "id": "28",
+    "category": "General",
+    "question": "How easy is it to integrate with existing websites or systems?",
+    "answer": "Most services can be easily integrated by adding a tag or via API, so large-scale server-side development or modification is not required."
+  },
+  {
+    "id": "29",
+    "category": "General",
+    "question": "What kinds of companies and industries use your products?",
+    "answer": "Our products are used by a wide range of industries and company sizes, including major manufacturers, government agencies, e-commerce sites, information sites, real estate, and educational institutions."
+  },
+  {
+    "id": "30",
+    "category": "General",
+    "question": "How is security and personal information handled?",
+    "answer": "Being cloud-based, we comply with security standards and strictly manage the safety of personal data. For details, please contact us individually."
+  }
+]

@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState, CSSProperties } from "react";
 import { ChatInput } from "./ChatInput";
 import { ChatMessages } from "./ChatMessages";
+import { useLanguage } from "../context/LanguageContext";
 
 interface ChatMessage {
   role: "user" | "ai";
@@ -37,6 +38,7 @@ export function ChatModal({
   onClearChat,
   buttonPosition,
 }: ChatModalProps) {
+  const { t } = useLanguage();
   const [animationStage, setAnimationStage] = useState<
     "initial" | "expanding" | "expanded"
   >("initial");
@@ -262,14 +264,14 @@ export function ChatModal({
       >
         <div className="flex justify-between items-center p-4 border-b rounded-b-[33px]">
           <h2 className="text-xl font-semibold text-gray-800">
-            AIアシスタントとチャット
+            {t('chat.title')}
           </h2>
           <div className="flex gap-2">
             {onClearChat && messages.length > 0 && (
               <button
                 onClick={onClearChat}
                 className="p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100"
-                title="チャットをクリア"
+                title={t('chat.buttons.clear')}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -290,7 +292,7 @@ export function ChatModal({
             <button
               onClick={onClose}
               className="p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100"
-              title="閉じる"
+              title={t('chat.buttons.close')}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

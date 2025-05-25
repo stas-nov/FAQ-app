@@ -32,7 +32,28 @@ export function FaqDisplay({
     groupedFaqs[faq.category].push(faq);
   });
 
-  const sortedCategories = Object.keys(groupedFaqs).sort();
+  const categoryOrder = [
+    "MARS FINDER",
+    "MARS EmoTech",
+    "MARS SCREEN",
+    "MARS EXPLORER",
+    "MARS Platform",
+    "General"
+  ];
+  
+  const sortedCategories = Object.keys(groupedFaqs).sort((a, b) => {
+    const indexA = categoryOrder.indexOf(a);
+    const indexB = categoryOrder.indexOf(b);
+    
+    if (indexA !== -1 && indexB !== -1) {
+      return indexA - indexB;
+    }
+    
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    
+    return a.localeCompare(b);
+  });
 
   return (
     <div className="faq-container space-y-4">

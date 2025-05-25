@@ -1,4 +1,5 @@
 import { RefObject } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 interface SearchButtonProps {
   searchQuery: string;
@@ -15,17 +16,18 @@ export function SearchButton({
   searchButtonRef,
   handleSearchClick,
 }: SearchButtonProps) {
+  const { t } = useLanguage();
   return (
     <div
       ref={searchButtonRef}
-      className="mb-6 sm:mb-8 search-button w-full relative flex items-stretch text-left text-base sm:text-lg border-2 border-gray-300 rounded-[33px] rainbow-border-button hover:rainbow-border-button focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent bg-white transition-colors duration-200"
+      className="max-w-3xl mx-auto mb-6 sm:mb-8 search-button w-full relative flex items-stretch text-left text-base sm:text-lg border-2 border-gray-300 rounded-[33px] rainbow-border-button hover:rainbow-border-button focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent bg-white transition-colors duration-200"
       onClick={() => inputRef.current?.focus()}
     >
       <div className="grid grid-cols-12 sm:grid-cols-10 w-full">
         <div className="col-span-8 sm:col-span-7 relative">
           <input
             ref={inputRef}
-            placeholder="検索..."
+            placeholder={t('search.placeholder')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-3 sm:pl-7 my-3 sm:my-5 text-sm sm:text-base border-none outline-none focus:ring-0 focus:border-none hover:border-none bg-transparent"
@@ -53,7 +55,7 @@ export function SearchButton({
             <svg className="h-5 w-5 sm:h-6 sm:w-6 mr-1 sm:mr-2 ai-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V4H12Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className="text-sm sm:text-base">AIアシスタント</span>
+            <span className="text-sm sm:text-base">{t('search.aiButton')}</span>
           </div>
         </button>
       </div>

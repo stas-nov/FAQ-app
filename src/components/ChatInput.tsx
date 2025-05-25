@@ -1,4 +1,5 @@
 import { useState, FormEvent, useCallback, RefObject } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => Promise<void>;
@@ -8,6 +9,7 @@ interface ChatInputProps {
 
 export function ChatInput({ onSendMessage, isLoading = false, inputRef }: ChatInputProps) {
   const [message, setMessage] = useState('');
+  const { t } = useLanguage();
 
   const handleSubmit = useCallback(async (e: FormEvent) => {
     e.preventDefault();
@@ -50,7 +52,7 @@ export function ChatInput({ onSendMessage, isLoading = false, inputRef }: ChatIn
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          placeholder="AIアシスタントに質問する..."
+          placeholder={t('chat.placeholder')}
           className="w-full h-[65px] pl-12 pr-12 border-2 border-gray-100 rounded-[33px] bg-white rainbow-border-focus transition-all duration-300 flex items-center"
           disabled={isLoading}
         />
