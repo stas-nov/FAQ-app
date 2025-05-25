@@ -59,18 +59,14 @@ export function ChatModal({
     }
   }, [messages, showThinking]);
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-
   useEffect(() => {
     if (isOpen) {
-      const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-      setScrollPosition(currentScrollPos);
-      
       if (isMobile) {
         setAnimationStage("expanded");
         if (inputRef.current) {
           inputRef.current.focus();
         }
+        const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
         document.body.style.position = 'fixed';
         document.body.style.top = `-${currentScrollPos}px`;
         document.body.style.width = '100%';
@@ -105,7 +101,7 @@ export function ChatModal({
         document.body.style.position = '';
         document.body.style.top = '';
         document.body.style.width = '';
-        window.scrollTo(0, scrollPosition);
+        window.scrollTo(0, 0); // Scroll to top on mobile
       }
       
       document.body.style.overflow = "auto";
