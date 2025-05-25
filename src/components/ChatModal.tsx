@@ -59,14 +59,21 @@ export function ChatModal({
     }
   }, [messages, showThinking]);
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+
   useEffect(() => {
     if (isOpen) {
+      const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+      setScrollPosition(currentScrollPos);
+      
       if (isMobile) {
         setAnimationStage("expanded");
         if (inputRef.current) {
           inputRef.current.focus();
         }
-        document.body.style.overflow = "hidden";
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${currentScrollPos}px`;
+        document.body.style.width = '100%';
       } else {
         setAnimationStage("initial");
 
@@ -93,6 +100,14 @@ export function ChatModal({
       }
     } else {
       setAnimationStage("initial");
+      
+      if (isMobile) {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, scrollPosition);
+      }
+      
       document.body.style.overflow = "auto";
       document.body.style.paddingRight = "0";
     }
