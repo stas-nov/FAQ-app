@@ -5,6 +5,7 @@ import faqData from "./data/faq.json";
 import createSystemPrompt from "./data/faqPrompt";
 import { chatWithGPT, Message as ApiMessage } from "./api/openai";
 import "./styles/rainbow.css"; // Import the rainbow border effect
+import "./styles/icon-animations.css"; // Import the icon animations
 
 interface ChatMessage {
   role: "user" | "ai";
@@ -22,6 +23,7 @@ interface ButtonPosition {
 
 function App() {
   const searchButtonRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -161,28 +163,43 @@ function App() {
         {/* Ask AI Button */}
         <div
           ref={searchButtonRef}
-          className="mb-8 search-button w-full relative flex items-center p-5 text-left text-lg border-2 border-gray-300 rounded-[33px] rainbow-border-button hover:rainbow-border-button focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent bg-white transition-colors duration-200"
+          className="mb-8 search-button w-full relative flex items-stretch text-left text-lg border-2 border-gray-300 rounded-[33px] rainbow-border-button hover:rainbow-border-button focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent bg-white transition-colors duration-200"
+          onClick={() => inputRef.current?.focus()}
         >
           <div className="grid grid-cols-10 w-full">
-            <input className="ml-7 col-span-7 bg-slate-300" />
+            <div className="col-span-7 relative">
+              <input
+                ref={inputRef}
+                placeholder="検索..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-7 my-5 border-none outline-none focus:ring-0 focus:border-none hover:border-none bg-transparent"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    inputRef.current?.focus();
+                  }}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  aria-label="Clear search"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              )}
+            </div>
             <button
               onClick={handleSearchClick}
-              className="col-span-3 bg-red-100"
+              className="col-span-3 border-l-faqBorder border border-transparent rounded-r-[33px] rotate-on-hover"
             >
-              <svg
-                className="absolute left-4 h-5 w-5 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              <span className="">AIアシスタント</span>
+              <div className="flex items-center justify-center">
+                <svg className="h-6 w-6 mr-2 ai-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V4H12Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>AIアシスタント</span>
+              </div>
             </button>
           </div>
         </div>

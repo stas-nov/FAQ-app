@@ -6,68 +6,54 @@
 .rainbow-border-focus:focus {
   /* hide the default border, add your shadows */
   border: 2px solid transparent;
-  box-shadow:
-    0 0 0 3px rgba(255, 255, 255, 0.5),
-    0 0 0 4px transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 0 4px transparent;
 
   /* clip so white fill is under content and rainbow occupies the border */
   background-origin: border-box;
   background-clip: padding-box, border-box;
 
   /* two layers: white fill + seamless rainbow stripe */
-  background-image:
-    linear-gradient(white, white),
+  background-image: linear-gradient(white, white),
     linear-gradient(
       to right,
-      #ff0000, /* Red */
-      #ff8000, /* Orange */
-      #ffff00, /* Yellow */
-      #00ff00, /* Green */
-      #0000ff, /* Blue */
-      #8000ff, /* Indigo */
-      #ff00ff, /* Violet */
-      #ff0000  /* repeat Red for smooth wrap */
+      #e57373,
+      /* muted red */ #ffb74d,
+      /* muted orange */ #fff176,
+      /* muted yellow */ #81c784,
+      /* muted green */ #64b5f6,
+      /* muted blue */ #9575cd,
+      /* muted indigo */ #f06292,
+      /* muted violet/pink */ #e57373 /* wrap back to start for smooth loop */
     );
-
-  /* make rainbow stripe 4× wider so it can scroll */
   background-size: 100% 100%, 400% 100%;
   background-position: 0 0, 0 0;
-
-  /* now animate its position */
   animation: rotate-gradient 3s linear infinite;
 }
 
 .rainbow-border-button {
   /* hide the default border, add your shadows */
   border: 2px solid transparent;
-  box-shadow:
-    0 0 0 3px rgba(255, 255, 255, 0.5),
-    0 0 0 4px transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 0 4px transparent;
 
   /* clip so white fill is under content and rainbow occupies the border */
   background-origin: border-box;
   background-clip: padding-box, border-box;
 
   /* two layers: white fill + seamless rainbow stripe */
-  background-image:
-    linear-gradient(white, white),
+  background-image: linear-gradient(white, white),
     linear-gradient(
-    to right,
-    #ff0000, /* Red */
-    #ff8000, /* Orange */
-    #ffff00, /* Yellow */
-    #00ff00, /* Green */
-    #0000ff, /* Blue */
-    #8000ff, /* Indigo */
-    #ff00ff, /* Violet */
-    #ff0000  /* repeat Red for smooth wrap */
-  );
-
-  /* make rainbow stripe 4× wider so it can scroll */
+      to right,
+      #e57373,
+      /* muted red */ #ffb74d,
+      /* muted orange */ #fff176,
+      /* muted yellow */ #81c784,
+      /* muted green */ #64b5f6,
+      /* muted blue */ #9575cd,
+      /* muted indigo */ #f06292,
+      /* muted violet/pink */ #e57373 /* wrap back to start for smooth loop */
+    );
   background-size: 100% 100%, 400% 100%;
   background-position: 0 0, 0 0;
-
-  /* now animate its position */
   animation: rotate-gradient 3s linear infinite;
 }
 

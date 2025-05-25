@@ -88,7 +88,7 @@ export function FaqDisplay({
           </div>
         ))
       ) : (
-        <p className="text-center text-gray-500 py-4">No FAQs found matching your search.</p>
+        <p className="text-center text-gray-500 py-4">お探しのFAQが見つかりませんでした。</p>
       )}
     </div>
   );
