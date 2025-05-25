@@ -134,7 +134,7 @@ function AppContent() {
         setIsLoading(false);
       }
     },
-    [chatHistory]
+    [chatHistory, language]
   );
 
   return (
