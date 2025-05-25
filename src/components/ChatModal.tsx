@@ -2,6 +2,7 @@ import { useRef, useEffect, useState, CSSProperties } from "react";
 import { ChatInput } from "./ChatInput";
 import { ChatMessages } from "./ChatMessages";
 import { useLanguage } from "../context/LanguageContext";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 interface ChatMessage {
   role: "user" | "ai";
@@ -39,6 +40,7 @@ export function ChatModal({
   buttonPosition,
 }: ChatModalProps) {
   const { t } = useLanguage();
+  const isMobile = useMediaQuery('(max-width: 640px)');
   const [animationStage, setAnimationStage] = useState<
     "initial" | "expanding" | "expanded"
   >("initial");
@@ -59,34 +61,42 @@ export function ChatModal({
 
   useEffect(() => {
     if (isOpen) {
-      setAnimationStage("initial");
-
-      const expandingTimer = setTimeout(() => {
-        setAnimationStage("expanding");
-      }, 50);
-      const expandedTimer = setTimeout(() => {
+      if (isMobile) {
         setAnimationStage("expanded");
         if (inputRef.current) {
           inputRef.current.focus();
         }
-
-        const scrollbarWidth =
-          window.innerWidth - document.documentElement.clientWidth;
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
-
         document.body.style.overflow = "hidden";
-      }, 300);
+      } else {
+        setAnimationStage("initial");
 
-      return () => {
-        clearTimeout(expandingTimer);
-        clearTimeout(expandedTimer);
-      };
+        const expandingTimer = setTimeout(() => {
+          setAnimationStage("expanding");
+        }, 50);
+        const expandedTimer = setTimeout(() => {
+          setAnimationStage("expanded");
+          if (inputRef.current) {
+            inputRef.current.focus();
+          }
+
+          const scrollbarWidth =
+            window.innerWidth - document.documentElement.clientWidth;
+          document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+          document.body.style.overflow = "hidden";
+        }, 300);
+
+        return () => {
+          clearTimeout(expandingTimer);
+          clearTimeout(expandedTimer);
+        };
+      }
     } else {
       setAnimationStage("initial");
       document.body.style.overflow = "auto";
       document.body.style.paddingRight = "0";
     }
-  }, [isOpen]);
+  }, [isOpen, isMobile]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -189,21 +199,37 @@ export function ChatModal({
   };
 
   const getModalStyles = (): CSSProperties => {
-    const visibilityStyles = calculateVisibility();
-
-    if (animationStage === "initial" && buttonPosition) {
+    // For mobile devices, use full screen modal without animations or position adjustments
+    if (isMobile) {
       return {
         position: "fixed" as const,
-        top: `${buttonPosition.visibleTop}px`,
-        left: `${buttonPosition.visibleLeft}px`,
-        width: `${buttonPosition.width}px`,
-        height: `${buttonPosition.height}px`,
-        borderRadius: "33px",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100vh",
+        borderRadius: 0,
         opacity: 1,
-        maxHeight: `${buttonPosition.height}px`,
-        overflow: "hidden",
-        transition: "none",
         zIndex: 1000,
+        boxShadow: "none",
+        overflow: "hidden",
+      };
+    }
+    
+    // Desktop behavior with animations and positioning
+    const visibilityStyles = calculateVisibility();
+
+    if (animationStage === "initial") {
+      return {
+        position: "fixed" as const,
+        top: buttonPosition ? `${buttonPosition.visibleTop}px` : "10%",
+        left: buttonPosition ? `${buttonPosition.visibleLeft}px` : "50%",
+        width: buttonPosition ? `${buttonPosition.width}px` : "100%",
+        height: buttonPosition ? `${buttonPosition.height}px` : "0",
+        borderRadius: "33px",
+        opacity: 0,
+        zIndex: 1000,
+        boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)",
+        overflow: "hidden",
         ...visibilityStyles,
       };
     } else if (animationStage === "expanding") {
@@ -239,6 +265,7 @@ export function ChatModal({
   };
 
   const getBgOpacity = () => {
+    if (isMobile) return 0.5;
     if (animationStage === "initial") return 0;
     if (animationStage === "expanding") return 0.3;
     return 0.5;
@@ -257,7 +284,7 @@ export function ChatModal({
         className="bg-white shadow-2xl flex flex-col overflow-hidden pointer-events-auto"
         style={{
           ...getModalStyles(),
-          height: "70vh",
+          height: isMobile ? "100vh" : "70vh",
           display: "flex",
           flexDirection: "column",
         }}

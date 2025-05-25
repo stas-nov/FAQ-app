@@ -1,5 +1,6 @@
 import { useState, FormEvent, useCallback, RefObject } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => Promise<void>;
@@ -9,6 +10,7 @@ interface ChatInputProps {
 
 export function ChatInput({ onSendMessage, isLoading = false, inputRef }: ChatInputProps) {
   const [message, setMessage] = useState('');
+  const isMobile = useMediaQuery('(max-width: 640px)');
   const { t } = useLanguage();
 
   const handleSubmit = useCallback(async (e: FormEvent) => {
@@ -53,7 +55,7 @@ export function ChatInput({ onSendMessage, isLoading = false, inputRef }: ChatIn
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder={t('chat.placeholder')}
-          className="w-full h-[65px] pl-12 pr-12 border-2 border-gray-100 rounded-[33px] bg-white rainbow-border-focus transition-all duration-300 flex items-center"
+          className={`w-full h-[65px] pl-12 pr-12 border-2 border-gray-100 ${isMobile ? 'rounded-t-[33px]' : 'rounded-[33px]'} bg-white rainbow-border-focus transition-all duration-300 flex items-center`}  
           disabled={isLoading}
         />
         <button
