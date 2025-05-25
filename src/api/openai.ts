@@ -9,7 +9,7 @@ export interface Message {
 export async function chatWithGPT(messages: Message[]): Promise<string> {
   try {
     if (!OPENAI_API_KEY) {
-      throw new Error('OpenAI APIキーが設定されていません。.envファイルをご確認ください。');
+      throw new Error('OpenAI APIキーが設定されていません。.envファイルをご確認ください。（WebサイトではAI機能を使えません。）');
     }
 
     const response = await fetch(API_URL, {

@@ -316,7 +316,6 @@ export function ChatModal({
           <ChatMessages
             messages={messages}
             showThinking={showThinking}
-            error={error}
             chatContainerRef={chatContainerRef}
             messagesEndRef={messagesEndRef}
           />

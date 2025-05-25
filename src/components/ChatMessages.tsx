@@ -4,12 +4,12 @@ import { useLanguage } from "../context/LanguageContext";
 interface ChatMessage {
   role: "user" | "ai";
   content: string;
+  isError?: boolean;
 }
 
 interface ChatMessagesProps {
   messages: ChatMessage[];
   showThinking: boolean;
-  error: string | null;
   chatContainerRef: RefObject<HTMLDivElement>;
   messagesEndRef: RefObject<HTMLDivElement>;
 }
@@ -17,7 +17,6 @@ interface ChatMessagesProps {
 export function ChatMessages({
   messages,
   showThinking,
-  error,
   chatContainerRef,
   messagesEndRef,
 }: ChatMessagesProps) {
@@ -77,7 +76,9 @@ export function ChatMessages({
                           className={`rounded-2xl px-4 py-2 ${
                             isUser
                               ? "rainbow-bg text-gray-800 rounded-tr-none"
-                              : "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-tl-none"
+                              : message.isError
+                                ? "bg-red-50 text-red-800 rounded-tl-none"
+                                : "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-tl-none"
                           }`}
                         >
                           <div className="break-words break-all whitespace-pre-wrap">
@@ -115,13 +116,7 @@ export function ChatMessages({
           </div>
         )}
 
-        {error && (
-          <div className="flex justify-start px-4">
-            <div className="bg-red-50 text-red-800 rounded-2xl rounded-tl-none p-2 px-4 max-w-[85%] lg:max-w-[70%]">
-              <p className="text-sm">{error}</p>
-            </div>
-          </div>
-        )}
+
       </div>
     </div>
   );

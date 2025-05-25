@@ -14,6 +14,7 @@ import "./styles/icon-animations.css";
 interface ChatMessage {
   role: "user" | "ai";
   content: string;
+  isError?: boolean;
 }
 
 interface ButtonPosition {
@@ -129,7 +130,8 @@ function AppContent() {
       } catch (err) {
         const errorMessage =
           err instanceof Error ? err.message : "An unknown error occurred";
-        setError(errorMessage);
+        setChatHistory((prev) => [...prev, { role: "ai", content: errorMessage, isError: true }]);
+        setError(null);
       } finally {
         setIsLoading(false);
       }
